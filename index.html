@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Shield App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overscroll-behavior: none; /* Prevents pull-to-refresh */
+        }
+        /* Approximate 19.3:9 aspect ratio for a modern phone look */
+        .phone-container {
+            width: 100%;
+            max-width: 380px;
+            height: 816px;
+        }
+        .screen-content {
+            padding-bottom: 80px; /* Space for the bottom nav */
+        }
+        .bottom-nav button.active svg {
+            color: #2563EB; /* blue-600 */
+        }
+        .bottom-nav button.active span {
+            color: #2563EB; /* blue-600 */
+        }
+        /* Hide scrollbar */
+        .phone-body::-webkit-scrollbar {
+            display: none;
+        }
+        .phone-body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .reward-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .reward-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-gray-200 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-lg mx-auto mb-4 text-center">
+        <h1 class="text-2xl font-bold text-gray-800">Squad Shield App</h1>
+        <p class="text-gray-600">Gamified Insurance Experience</p>
+    </div>
+
+    <!-- Phone Mockup Container -->
+    <div class="phone-container bg-white border-8 border-black rounded-3xl shadow-2xl overflow-hidden relative">
+        <div id="phone-body" class="phone-body h-full w-full overflow-y-auto bg-gray-50">
+
+            <!-- Screen 1: Squad Hub -->
+            <div id="screen-hub" class="screen p-5 screen-content">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-500">Welcome back,</p>
+                        <h1 class="text-2xl font-bold text-gray-900">Atharva</h1>
+                    </div>
+                    <img src="https://placehold.co/48x48/10B981/FFFFFF?text=A" alt="Atharva's Avatar" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+                </div>
+
+                <!-- Squad Shield Score Card -->
+                <div class="mt-6 bg-blue-50 border border-blue-200 rounded-2xl p-4 text-center cursor-pointer" onclick="navigateTo('screen-rewards')">
+                    <p class="text-sm font-semibold text-blue-800">Squad Shield Score</p>
+                    <div class="flex items-center justify-center gap-2 mt-2">
+                        <span class="text-5xl font-extrabold text-blue-600">385</span>
+                        <div class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full">GOOD</div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">You're in the <span class="font-bold text-gray-700">Gold League</span>. Tap to see rewards.</p>
+                </div>
+
+                <!-- Premium Booster -->
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Premium Booster</h2>
+                    <div class="mt-3 bg-white rounded-2xl shadow-md p-4">
+                        <p class="text-sm text-gray-500">Monthly Premium</p>
+                        <div class="flex items-baseline justify-between mt-1">
+                            <span class="text-2xl font-bold text-gray-800">₹450</span>
+                            <span class="text-sm font-medium text-green-600">Paid</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                            <div class="bg-green-500 h-2.5 rounded-full" style="width: 100%;"></div>
+                        </div>
+                         <p class="text-xs text-gray-500 mt-2">Next payment in 25 days.</p>
+                    </div>
+                </div>
+
+                <!-- My Squad Card -->
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">My Squad: Campus Crusaders</h2>
+                    <div class="mt-3 bg-white rounded-2xl shadow-md p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500">Current Coverage</p>
+                                <p class="text-2xl font-bold text-gray-800">₹1,00,000</p>
+                            </div>
+                            <div class="flex -space-x-3">
+                                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/40x40/3B82F6/FFFFFF?text=R" alt="Raghav" title="Raghav">
+                                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/40x40/10B981/FFFFFF?text=A" alt="Atharva" title="Atharva">
+                                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/40x40/EC4899/FFFFFF?text=K" alt="Kritika" title="Kritika">
+                                <img class="w-10 h-10 rounded-full border-2 border-white" src="https://placehold.co/40x40/F59E0B/FFFFFF?text=Y" alt="Yash" title="Yash">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center text-xs font-medium text-gray-600">
+                                <span>Bronze Tier</span>
+                                <span>Next: Silver Tier</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                                <div class="bg-yellow-400 h-2.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <p class="text-xs text-center mt-1 text-gray-500">600/1000 points to unlock Silver Tier</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 2: Quests & Community -->
+            <div id="screen-quests" class="screen hidden p-5 screen-content">
+                <h1 class="text-2xl font-bold text-gray-900">Quests & Community</h1>
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Squad Raids</h2>
+                    <div class="mt-3 bg-purple-600 text-white rounded-2xl p-4 shadow-lg">
+                        <p class="font-bold text-lg">Weekly Fin-Q Bout</p>
+                        <p class="text-sm mt-1">Complete 10 quizzes collectively to win a 1-month premium waiver!</p>
+                        <div class="w-full bg-purple-400 rounded-full h-2.5 mt-3"><div class="bg-white h-2.5 rounded-full" style="width: 70%"></div></div>
+                        <p class="text-xs text-right mt-1">7/10 Complete</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Your Daily Quests</h2>
+                    <div class="space-y-3 mt-3">
+                        <div class="flex items-center bg-white p-3 rounded-xl shadow-sm">
+                            <div class="bg-yellow-100 p-3 rounded-lg"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></div>
+                            <div class="ml-4 flex-grow"><p class="font-bold text-gray-800">Knowledge Quest</p><p class="text-sm text-gray-500">What's a 'rider'?</p></div>
+                            <button class="text-sm bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Play</button>
+                        </div>
+                        <div class="flex items-center bg-white p-3 rounded-xl shadow-sm">
+                            <div class="bg-green-100 p-3 rounded-lg"><svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                            <div class="ml-4 flex-grow"><p class="font-bold text-gray-800">Watch & Learn</p><p class="text-sm text-gray-500">Watch a 30s video on claims.</p></div>
+                            <button class="text-sm bg-blue-500 text-white px-4 py-2 rounded-full font-semibold">Watch</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <h2 class="text-lg font-bold text-gray-800">Community Buzz</h2>
+                     <div class="mt-3 space-y-3">
+                        <div class="bg-white p-3 rounded-xl shadow-sm"><p class="text-sm text-gray-700"><span class="font-bold text-red-500">The Vindicators</span> just unlocked <span class="font-bold">Silver Tier!</span> 🔥</p><p class="text-xs text-gray-400 mt-1">2 minutes ago</p></div>
+                        <div class="bg-white p-3 rounded-xl shadow-sm"><p class="text-sm text-gray-700"><span class="font-bold text-purple-500">Policy Protectors</span> started a rivalry with your squad! ⚔️</p><p class="text-xs text-gray-400 mt-1">1 hour ago</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 3: Rank Rush Leaderboard -->
+            <div id="screen-leaderboard" class="screen hidden p-5 screen-content">
+                <h1 class="text-2xl font-bold text-gray-900">Rank Rush</h1>
+                <div class="flex justify-center bg-gray-200 p-1 rounded-full my-4">
+                    <button class="px-4 py-1.5 text-sm font-semibold text-white bg-blue-600 rounded-full flex-1">Campus</button>
+                    <button class="px-4 py-1.5 text-sm font-semibold text-gray-600 rounded-full flex-1">City</button>
+                    <button class="px-4 py-1.5 text-sm font-semibold text-gray-600 rounded-full flex-1">National</button>
+                </div>
+                <div class="mt-4 bg-red-50 border-2 border-red-500 rounded-2xl p-4">
+                    <h3 class="font-bold text-red-800 text-center">🔥 RIVALRY ACTIVE 🔥</h3>
+                    <div class="flex justify-around items-center mt-2">
+                        <div class="text-center"><p class="font-bold text-blue-700">Campus Crusaders</p><p class="text-lg font-bold">600 pts</p></div>
+                        <span class="font-bold text-2xl text-gray-700">VS</span>
+                        <div class="text-center"><p class="font-bold text-purple-700">Policy Protectors</p><p class="text-lg font-bold">550 pts</p></div>
+                    </div>
+                    <p class="text-xs text-center text-red-600 mt-2">Win to get a +50 point bonus!</p>
+                </div>
+                <div class="space-y-2 mt-6">
+                    <div class="flex items-center bg-white p-3 rounded-xl shadow-sm border-2 border-yellow-400">
+                        <span class="font-bold text-lg w-8 text-center">1</span>
+                        <div class="flex items-center ml-2 flex-grow">
+                            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center font-bold text-white text-lg">V</div>
+                            <div class="ml-3"><p class="font-bold">The Vindicators</p><p class="text-xs text-gray-500">Silver Tier</p></div>
+                        </div>
+                        <p class="font-extrabold text-lg text-red-500">1150 pts</p>
+                    </div>
+                    <div class="flex items-center bg-blue-50 p-3 rounded-xl shadow-sm border-2 border-blue-500">
+                        <span class="font-bold text-lg w-8 text-center">2</span>
+                        <div class="flex items-center ml-2 flex-grow">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center font-bold text-white text-lg">CC</div>
+                            <div class="ml-3"><p class="font-bold">Campus Crusaders</p><p class="text-xs text-gray-500">Bronze Tier</p></div>
+                        </div>
+                        <p class="font-extrabold text-lg text-blue-600">600 pts</p>
+                    </div>
+                    <div class="flex items-center bg-white p-3 rounded-xl shadow-sm">
+                        <span class="font-bold text-lg w-8 text-center">3</span>
+                        <div class="flex items-center ml-2 flex-grow">
+                            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center font-bold text-white text-lg">P</div>
+                            <div class="ml-3"><p class="font-bold">Policy Protectors</p><p class="text-xs text-gray-500">Bronze Tier</p></div>
+                        </div>
+                        <p class="font-extrabold text-lg text-purple-600">550 pts</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 4: Rewards & Score -->
+            <div id="screen-rewards" class="screen hidden p-5 screen-content">
+                <h1 class="text-2xl font-bold text-gray-900">Rewards & Score</h1>
+                
+                <!-- Rewards Section -->
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Your Rewards</h2>
+                    <div class="grid grid-cols-2 gap-4 mt-3">
+                        <!-- Zomato Card -->
+                        <div class="reward-card">
+                            <img src="https://placehold.co/160x90/EF4444/FFFFFF?text=Zomato+Deal" alt="Zomato Deal">
+                            <div class="p-3">
+                                <img src="https://placehold.co/32x32/EF4444/FFFFFF?text=Z" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white">
+                                <p class="font-bold text-gray-800 mt-1">Get 8 Slices of Pizza</p>
+                                <p class="text-xs text-gray-500">Large Pizza @ ₹499 for new users</p>
+                            </div>
+                        </div>
+                        <!-- Lenskart Card -->
+                        <div class="reward-card">
+                            <img src="https://placehold.co/160x90/3B82F6/FFFFFF?text=Lenskart" alt="Lenskart Deal">
+                            <div class="p-3">
+                                <img src="https://placehold.co/32x32/3B82F6/FFFFFF?text=L" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white">
+                                <p class="font-bold text-gray-800 mt-1">Free Lenskart Gold</p>
+                                <p class="text-xs text-gray-500">1 year membership worth ₹800</p>
+                            </div>
+                        </div>
+                        <!-- Myntra Card -->
+                        <div class="reward-card">
+                           <img src="https://placehold.co/160x90/F87171/FFFFFF?text=Myntra+Fashion" alt="Myntra Deal">
+                            <div class="p-3">
+                                <img src="https://placehold.co/32x32/F87171/FFFFFF?text=M" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white">
+                                <p class="font-bold text-gray-800 mt-1">Flat ₹300 OFF</p>
+                                <p class="text-xs text-gray-500">On min. purchase of ₹1999</p>
+                            </div>
+                        </div>
+                        <!-- SBI Card -->
+                         <div class="reward-card">
+                           <img src="https://placehold.co/160x90/1D4ED8/FFFFFF?text=SBI+Card" alt="SBI Card Deal">
+                            <div class="p-3">
+                                <img src="https://placehold.co/32x32/1D4ED8/FFFFFF?text=S" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white">
+                                <p class="font-bold text-gray-800 mt-1">1000 Bonus Points</p>
+                                <p class="text-xs text-gray-500">On your next SBI Credit Card</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score Breakdown Section -->
+                <div class="mt-8">
+                    <h2 class="text-lg font-bold text-gray-800">Score Breakdown</h2>
+                    <div class="bg-white rounded-2xl shadow-md p-4 mt-3 space-y-4">
+                        <div>
+                            <div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Payment Consistency</p><p class="text-sm font-bold text-gray-800">154 <span class="font-normal text-gray-500">/ 200</span></p></div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-blue-500 h-2 rounded-full" style="width: 77%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Engagement & Education</p><p class="text-sm font-bold text-gray-800">120 <span class="font-normal text-gray-500">/ 150</span></p></div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Group Dynamics</p><p class="text-sm font-bold text-gray-800">60 <span class="font-normal text-gray-500">/ 75</span></p></div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-yellow-500 h-2 rounded-full" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 5: Discover & Stories -->
+            <div id="screen-discover" class="screen hidden p-5 screen-content">
+                <h1 class="text-2xl font-bold text-gray-900">Discover</h1>
+                
+                <!-- Main Banners -->
+                <div class="mt-6 space-y-4">
+                    <!-- Life Insurance Banner -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-40">
+                        <img src="https://placehold.co/340x160/3B82F6/FFFFFF?text=Happy+Friends" class="w-full h-full object-cover" alt="Happy friends for life insurance banner">
+                        <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-0 left-0 p-4 text-white">
+                            <h3 class="font-bold text-lg">Secure Your Future</h3>
+                            <p class="text-sm">Explore Life Insurance plans from ₹199/mo.</p>
+                        </div>
+                    </div>
+                    <!-- Health Insurance Banner -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg h-40">
+                        <img src="https://placehold.co/340x160/10B981/FFFFFF?text=Healthy+Lifestyle" class="w-full h-full object-cover" alt="Person living a healthy lifestyle for health insurance banner">
+                         <div class="absolute inset-0 bg-black/40"></div>
+                        <div class="absolute bottom-0 left-0 p-4 text-white">
+                            <h3 class="font-bold text-lg">Stay Healthy, Stay Happy</h3>
+                            <p class="text-sm">Comprehensive Health coverage for you.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h2 class="text-lg font-bold text-gray-800">More to Discover</h2>
+                    <div class="grid grid-cols-2 gap-4 mt-3">
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 text-center shadow-sm">
+                            <p class="text-3xl">✈️</p>
+                            <p class="font-bold text-gray-800 mt-1">Travel Guard</p>
+                            <p class="text-xs text-gray-600">For your next adventure</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 text-center shadow-sm">
+                            <p class="text-3xl">📱</p>
+                            <p class="font-bold text-gray-800 mt-1">Gadget Shield</p>
+                            <p class="text-xs text-gray-600">Protect your devices</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h2 class="text-lg font-bold text-gray-800">Success Stories</h2>
+                    <div class="mt-3 bg-white rounded-2xl shadow-md p-4">
+                        <div class="flex items-start gap-3">
+                            <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=S" alt="Sneha's Avatar" class="w-10 h-10 rounded-full">
+                            <div><p class="font-bold">Sneha from Pune</p><p class="text-sm text-gray-600 mt-1">"My squad and I had a trekking accident. The claim process was so fast through the app. We got the payout in less than 24 hours. Squad Shield was a lifesaver!"</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Bottom Navigation -->
+        <div class="bottom-nav absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-gray-200 flex justify-around items-center h-20 rounded-b-3xl">
+            <button onclick="navigateTo('screen-hub')" class="nav-btn text-center text-gray-500 w-1/5 active">
+                <svg class="w-7 h-7 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                <span class="text-xs font-bold">Hub</span>
+            </button>
+            <button onclick="navigateTo('screen-quests')" class="nav-btn text-center text-gray-500 w-1/5">
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span class="text-xs font-medium">Quests</span>
+            </button>
+            <button onclick="navigateTo('screen-leaderboard')" class="nav-btn text-center text-gray-500 w-1/5">
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="text-xs font-medium">Ranks</span>
+            </button>
+             <button onclick="navigateTo('screen-rewards')" class="nav-btn text-center text-gray-500 w-1/5">
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1m0-1V4m0 2v1m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 4c1.11 0 2.08.402 2.599 1M12 4V3m0 1v.01M12 3v-1m0 1V2m0 1v.01M12 2c-1.11 0-2.08-.402-2.599-1M12 2V1m0 1v.01"></path></svg>
+                <span class="text-xs font-medium">Rewards</span>
+            </button>
+            <button onclick="navigateTo('screen-discover')" class="nav-btn text-center text-gray-500 w-1/5">
+                <svg class="w-7 h-7 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <span class="text-xs font-medium">Discover</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const screens = document.querySelectorAll('.screen');
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const phoneBody = document.getElementById('phone-body');
+
+        function navigateTo(screenId) {
+            screens.forEach(screen => screen.classList.add('hidden'));
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden');
+            }
+
+            navButtons.forEach(button => {
+                button.classList.remove('active');
+                button.querySelector('span').classList.remove('font-bold');
+                button.querySelector('span').classList.add('font-medium');
+
+                if (button.getAttribute('onclick').includes(screenId)) {
+                    button.classList.add('active');
+                    button.querySelector('span').classList.add('font-bold');
+                    button.querySelector('span').classList.remove('font-medium');
+                }
+            });
+            
+            phoneBody.scrollTop = 0;
+        }
+    </script>
+
+</body>
+</html>
