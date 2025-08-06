@@ -22,7 +22,7 @@
             margin: auto; /* Center the container */
         }
         .screen-content {
-            padding-bottom: 80px; /* Space for the bottom nav */
+            padding-bottom: 120px; /* Increased padding for more space at the bottom */
         }
         .bottom-nav button.active svg {
             color: #2563EB; /* blue-600 */
@@ -121,6 +121,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Recent Activity -->
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Recent Activity</h2>
+                    <div class="mt-3 space-y-3">
+                        <div class="bg-white p-3 rounded-xl shadow-sm"><p class="text-sm text-gray-700">🎉 Your squad unlocked the <span class="font-bold text-purple-600">Weekly Fin-Q Bout</span> raid!</p><p class="text-xs text-gray-400 mt-1">15 minutes ago</p></div>
+                        <div class="bg-white p-3 rounded-xl shadow-sm"><p class="text-sm text-gray-700">💸 Your <span class="font-bold">Squad Premium</span> payment was successful.</p><p class="text-xs text-gray-400 mt-1">5 days ago</p></div>
+                        <div class="bg-white p-3 rounded-xl shadow-sm"><p class="text-sm text-gray-700">📈 Your Squad Shield Score increased by <span class="font-bold text-green-600">+10 points</span>.</p><p class="text-xs text-gray-400 mt-1">6 days ago</p></div>
+                    </div>
+                </div>
             </div>
 
             <!-- Screen 2: Quests & Community -->
@@ -208,13 +218,27 @@
                         <span class="font-bold text-lg w-8 text-center">6</span>
                         <div class="flex items-center ml-2 flex-grow"><div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center font-bold text-white text-lg">A</div><div class="ml-3"><p class="font-bold">Alpha Alliance</p><p class="text-xs text-gray-500">Bronze Tier</p></div></div><p class="font-extrabold text-lg text-indigo-600">420 pts</p>
                     </div>
+                     <div class="flex items-center bg-white p-3 rounded-xl shadow-sm">
+                        <span class="font-bold text-lg w-8 text-center">7</span>
+                        <div class="flex items-center ml-2 flex-grow"><div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center font-bold text-white text-lg">T</div><div class="ml-3"><p class="font-bold">Team Titans</p><p class="text-xs text-gray-500">Bronze Tier</p></div></div><p class="font-extrabold text-lg text-teal-600">390 pts</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Screen 4: Rewards & Score -->
             <div id="screen-rewards" class="screen hidden p-5 screen-content">
                 <h1 class="text-2xl font-bold text-gray-900">Rewards & Score</h1>
+                
                 <div class="mt-6">
+                    <h2 class="text-lg font-bold text-gray-800">Score Breakdown</h2>
+                    <div class="bg-white rounded-2xl shadow-md p-4 mt-3 space-y-4">
+                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Payment Consistency</p><p class="text-sm font-bold text-gray-800">184 <span class="font-normal text-gray-500">/ 200</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-blue-500 h-2 rounded-full" style="width: 92%"></div></div></div>
+                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Engagement & Education</p><p class="text-sm font-bold text-gray-800">132 <span class="font-normal text-gray-500">/ 150</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-green-500 h-2 rounded-full" style="width: 88%"></div></div></div>
+                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Group Dynamics</p><p class="text-sm font-bold text-gray-800">71 <span class="font-normal text-gray-500">/ 75</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-yellow-500 h-2 rounded-full" style="width: 95%"></div></div></div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
                     <h2 class="text-lg font-bold text-gray-800">Your Rewards</h2>
                     <div class="grid grid-cols-2 gap-4 mt-3">
                         <div class="reward-card"><img src="https://placehold.co/160x90/EF4444/FFFFFF?text=Zomato+Deal" alt="Zomato Deal"><div class="p-3"><img src="https://placehold.co/32x32/EF4444/FFFFFF?text=Z" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white"><p class="font-bold text-gray-800 mt-1">Get 8 Slices of Pizza</p><p class="text-xs text-gray-500">Large Pizza @ ₹499 for new users</p></div></div>
@@ -223,14 +247,6 @@
                         <div class="reward-card"><img src="https://placehold.co/160x90/1D4ED8/FFFFFF?text=SBI+Card" alt="SBI Card Deal"><div class="p-3"><img src="https://placehold.co/32x32/1D4ED8/FFFFFF?text=S" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white"><p class="font-bold text-gray-800 mt-1">1000 Bonus Points</p><p class="text-xs text-gray-500">On your next SBI Credit Card</p></div></div>
                         <div class="reward-card"><img src="https://placehold.co/160x90/10B981/FFFFFF?text=Cult.Fit" alt="Cult.Fit Deal"><div class="p-3"><img src="https://placehold.co/32x32/10B981/FFFFFF?text=C" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white"><p class="font-bold text-gray-800 mt-1">Free Cult Pass</p><p class="text-xs text-gray-500">1-month free access to all centers</p></div></div>
                         <div class="reward-card"><img src="https://placehold.co/160x90/F59E0B/FFFFFF?text=Amazon+Prime" alt="Amazon Prime Deal"><div class="p-3"><img src="https://placehold.co/32x32/F59E0B/FFFFFF?text=P" class="w-8 h-8 rounded-lg -mt-7 border-2 border-white bg-white"><p class="font-bold text-gray-800 mt-1">3 Months of Prime</p><p class="text-xs text-gray-500">On us! Enjoy movies & free delivery</p></div></div>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <h2 class="text-lg font-bold text-gray-800">Score Breakdown</h2>
-                    <div class="bg-white rounded-2xl shadow-md p-4 mt-3 space-y-4">
-                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Payment Consistency</p><p class="text-sm font-bold text-gray-800">154 <span class="font-normal text-gray-500">/ 200</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-blue-500 h-2 rounded-full" style="width: 77%"></div></div></div>
-                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Engagement & Education</p><p class="text-sm font-bold text-gray-800">120 <span class="font-normal text-gray-500">/ 150</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div></div></div>
-                        <div><div class="flex justify-between items-baseline"><p class="font-semibold text-gray-700">Group Dynamics</p><p class="text-sm font-bold text-gray-800">60 <span class="font-normal text-gray-500">/ 75</span></p></div><div class="w-full bg-gray-200 rounded-full h-2 mt-1"><div class="bg-yellow-500 h-2 rounded-full" style="width: 80%"></div></div></div>
                     </div>
                 </div>
             </div>
